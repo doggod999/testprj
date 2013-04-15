@@ -27,5 +27,7 @@ for book in books:
     ftp = FTP('www.ppurl.com')
     ftp.login(user='free',passwd=password) 
     ftp.retrbinary('RETR %s' % path, open(name,'wb').write)  #TODO 增加检查文件是否完整
+    book['status'] = 1
+    db_book.save(book)
     print 'download finished'
 
